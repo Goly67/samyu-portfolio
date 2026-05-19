@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sam Yujoco - ICT student and developer portfolio. Web apps, school systems, and technology projects.">
+<title>Sam Yujoco - Technology Portfolio</title>
+<link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+  <div class="loading-screen" id="loadingScreen" role="status" aria-live="polite" aria-label="Loading portfolio">
+    <div class="loader-shell" aria-hidden="true">
+      <div class="loader-top">
+        <span class="skeleton-block skeleton-logo"></span>
+        <span class="skeleton-block skeleton-nav"></span>
+      </div>
+      <div class="loader-hero">
+        <div class="loader-copy">
+          <span class="skeleton-block skeleton-pill"></span>
+          <span class="skeleton-block skeleton-title"></span>
+          <span class="skeleton-block skeleton-title short"></span>
+          <span class="skeleton-block skeleton-line"></span>
+          <span class="skeleton-block skeleton-line wide"></span>
+          <span class="skeleton-block skeleton-line mid"></span>
+        </div>
+        <div class="skeleton-block skeleton-portrait"></div>
+      </div>
+      <div class="loader-grid">
+        <span class="skeleton-block"></span>
+        <span class="skeleton-block"></span>
+        <span class="skeleton-block"></span>
+        <span class="skeleton-block"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="offline-screen" id="offlineScreen" role="status" aria-live="assertive" aria-label="Connection lost">
+    <div class="offline-panel">
+      </svg>
+      <h1><strong style="color:rgb(255, 190, 190);">Uh-oh</strong>, where did the conenction go?</h1>
+      <p>Check your Wi-Fi or mobile data. The portfolio will come back automatically when the connection returns.</p>
+    </div>
+  </div>
+
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+  <div class="page">
+    <header class="topbar">
+      <a href="#top" class="brand" aria-label="Sam Yujoco portfolio home">
+        <span class="brand-mark">SY</span>
+        <span>xai.dev</span>
+      </a>
+      <div class="top-actions">
+        <nav aria-label="Primary navigation">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#timeline">Path</a></li>
+            <li><a href="#stack">Stack</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="language-switch" id="languageSwitch">
+          <button class="lang-current" id="langCurrent" type="button" aria-haspopup="true" aria-expanded="false">EN</button>
+          <div class="lang-menu" id="langMenu" role="menu" aria-label="Language selector">
+            <button class="lang-option active" type="button" data-lang="en" role="menuitem">English</button>
+            <button class="lang-option" type="button" data-lang="zh" role="menuitem">中文</button>
+            <button class="lang-option" type="button" data-lang="th" role="menuitem">ไทย</button>
+            <button class="lang-option" type="button" data-lang="vi" role="menuitem">Tiếng Việt</button>
+            <button class="lang-option" type="button" data-lang="ja" role="menuitem">日本語</button>
+            <button class="lang-option" type="button" data-lang="hr" role="menuitem">Hrvatski</button>
+            <button class="lang-option" type="button" data-lang="sr" role="menuitem">Srpski</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="intro">
+        <div class="profile-strip">
+          <div class="identity">
+            <div class="avatar">SY</div>
+            <div>
+              <p class="eyebrow">@goly67 / Mindanao, PH</p>
+              <strong>ICT Student + Developer</strong>
+            </div>
+          </div>
+          <div class="status-pill"><span class="status-dot"></span><span class="status-text">Open to internships</span></div>
+        </div>
+
+        <div class="intro-main">
+          <div class="intro-layout">
+            <div class="intro-copy">
+              <h1>Sam<br><span>Yujoco</span></h1>
+              <div class="type-line" aria-label="For future innovation. Made with creativity and passion.">
+                <span id="typeText" aria-hidden="true">For future innovation.</span><span class="type-caret" aria-hidden="true"></span>
+              </div>
+              <p class="lead">
+                18-year-old from <strong>Mindanao, Philippines</strong>, studying ICT at <strong>STI Colleges</strong>.
+                I build web apps, school systems, and practical tools that turn real problems into working technology.
+              </p>
+              <div class="actions">
+                <a class="btn btn-dark" href="#projects">View projects</a>
+                <a class="btn btn-light" href="#contact">Contact me</a>
+              </div>
+            </div>
+            <div class="intro-photo is-missing" aria-label="Sam Yujoco portrait">
+              <span class="portrait-fallback">SY</span>
+              <img src="pictures/image2.png" alt="Sam Yujoco" decoding="async" onload="this.closest('.intro-photo').classList.remove('is-missing')" onerror="this.remove()">
+              <span class="orbit-dot dot-js">Js</span>
+              <span class="orbit-dot dot-ui">HTML</span>
+              <span class="orbit-dot dot-db">DB</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-footer" aria-label="Profile quick facts">
+          <div class="metric"><strong>18</strong><span>Years old</span></div>
+          <div class="metric"><strong>4</strong><span>Featured builds</span></div>
+          <div class="metric"><strong>12</strong><span>Tools in stack</span></div>
+          <div class="metric"><strong>ICT</strong><span>STI Colleges</span></div>
+        </div>
+      </div>
+
+      <aside class="side" aria-label="Technology profile summary">
+        <div class="system-card" aria-label="Technology visual">
+          <div class="window-bar"><span></span><span></span><span></span></div>
+          <div class="code-screen">
+            <div><b>const</b> sam = {</div>
+            <div>&nbsp;&nbsp;role: <i>"developer"</i>,</div>
+            <div>&nbsp;&nbsp;focus: <i>"useful systems"</i>,</div>
+            <div>&nbsp;&nbsp;stack: [<em>"web"</em>, <em>"apps"</em>, <em>"data"</em>],</div>
+            <div>&nbsp;&nbsp;goal: <i>"enterprise or gov IT"</i></div>
+            <div>};</div>
+            <div class="node-map" aria-hidden="true">
+              <span class="node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt=""></span>
+              <span class="node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt=""></span>
+              <span class="node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt=""></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-card">
+          <div class="card-title">
+            <h2>Profile</h2>
+            <span class="mini-tag">available</span>
+          </div>
+          <div class="info-list">
+            <div class="info-row"><span>Name</span><span>Sam Yujoco</span></div>
+            <div class="info-row"><span>School</span><span>STI Colleges Philippines</span></div>
+            <div class="info-row"><span>Location</span><span>Mindanao</span></div>
+            <div class="info-row"><span>Open to</span><span>Internship / Collaboration</span></div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <main>
+      <div class="content-grid">
+        <div class="main-stack">
+          <section class="section" id="about">
+            <div class="section-title">
+              <h2>What I am looking for</h2>
+              <p>Technology with real use</p>
+            </div>
+            <p class="story">
+              I am building toward a future in <strong>government or enterprise IT</strong>, where software has to be reliable, useful, and clear for the people using it. I started with basic HTML pages and kept moving into web apps, school systems, databases, and frontend experiences that actually work.
+            </p>
+            <div class="focus-grid">
+              <div class="focus-item">
+                <span>01</span>
+                <h3>School systems</h3>
+                <p>Digital tools for attendance, records, reports, and workflows that replace slow manual processes.</p>
+              </div>
+              <div class="focus-item">
+                <span>02</span>
+                <h3>Web applications</h3>
+                <p>Responsive interfaces with clean layouts, useful interactions, and practical deployment.</p>
+              </div>
+              <div class="focus-item">
+                <span>03</span>
+                <h3>Data-driven tools</h3>
+                <p>Apps powered by APIs, databases, and real-time information for faster decisions.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="projects">
+            <div class="section-title">
+              <h2>Featured projects</h2>
+              <p>What have I been doing</p>
+            </div>
+            <div class="project-list">
+              <article class="project-card">
+                <div class="project-top">
+                  <span class="project-index">01 / Live</span>
+                  <div>
+                    <h3>EQ Monitor</h3>
+                    <p>Real-time earthquake monitoring app that shows live seismic activity through API data, helping users track earthquakes as they happen.</p>
+                  </div>
+                  <span class="badge live">Deployed</span>
+                </div>
+                <div class="project-footer">
+                  <div class="tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">API</span>
+                    <span class="tag">Monitoring</span>
+                    <span class="tag">Vercel</span>
+                  </div>
+                  <div class="project-links">
+                    <a class="text-link" href="https://eq-monitor.vercel.app/" target="_blank" rel="noopener">Open site</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="project-card">
+                <div class="project-top">
+                  <span class="project-index">02 / Live</span>
+                  <div>
+                    <h3>Finexus RL</h3>
+                    <p>A financial web application with a clean interface for viewing and managing financial data, built with a practical web stack and deployed on Vercel.</p>
+                  </div>
+                  <span class="badge live">Deployed</span>
+                </div>
+                <div class="project-footer">
+                  <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Finance</span>
+                  </div>
+                  <div class="project-links">
+                    <a class="text-link" href="https://finexus-rl.vercel.app/" target="_blank" rel="noopener">Open site</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="project-card">
+                <div class="project-top">
+                  <span class="project-index">03 / Build</span>
+                  <div>
+                    <h3>TimeCapsule</h3>
+                    <p>A personal web app for storing memories, notes, and moments over time. It is still being refined as a long-term personal product idea.</p>
+                  </div>
+                  <span class="badge dev">In development</span>
+                </div>
+                <div class="project-footer">
+                  <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Memories</span>
+                  </div>
+                  <div class="project-links">
+                    <a class="text-link" href="https://goly67.github.io/TimeCapsule/login.html" target="_blank" rel="noopener">Open site</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="project-card">
+                <div class="project-top">
+                  <span class="project-index">04 / STI</span>
+                  <div>
+                    <h3>Library Attendance System</h3>
+                    <p>A digital check-in and check-out system for the school library, replacing paper logbooks with faster lookup, cleaner records, and instant attendance reporting.</p>
+                  </div>
+                  <span class="badge dev">In development</span>
+                </div>
+                <div class="project-footer">
+                  <div class="tags">
+                    <span class="tag">Java</span>
+                    <span class="tag">XML</span>
+                    <span class="tag">Database</span>
+                    <span class="tag">Reports</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="section" id="timeline">
+            <div class="section-title">
+              <h2>Path</h2>
+              <p>Learning, building, improving</p>
+            </div>
+            <div class="timeline">
+              <article class="timeline-item">
+                <div class="timeline-logo">STI</div>
+                <div>
+                  <h3>ICT Student</h3>
+                  <div class="timeline-meta">STI Colleges Philippines / Current</div>
+                  <p>Studying ICT while building practical projects on the side, with focus on frontend, backend basics, databases, and real-world school systems.</p>
+                </div>
+              </article>
+
+              <article class="timeline-item">
+                <div class="timeline-logo">WEB</div>
+                <div>
+                  <h3>Developer and Builder</h3>
+                  <div class="timeline-meta">Personal projects / Ongoing</div>
+                  <p>Building deployed web apps like EQ Monitor and Finexus RL, then improving them through better UI, API handling, and responsive design.</p>
+                </div>
+              </article>
+
+              <article class="timeline-item">
+                <div class="timeline-logo">SYS</div>
+                <div>
+                  <h3>School System Projects</h3>
+                  <div class="timeline-meta">Library tools / In progress</div>
+                  <p>Working on digital tools that reduce manual work, improve record accuracy, and give school staff faster access to important information.</p>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+
+        <aside class="aside-stack" aria-label="Stack and contact">
+          <section class="stack-card" id="stack">
+            <div class="card-title">
+              <h2>Tech stack</h2>
+              <span class="mini-tag">tools</span>
+            </div>
+            <div class="stack-grid">
+              <a class="tool" href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener" aria-label="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"></a>
+              <a class="tool" href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener" aria-label="CSS3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"></a>
+              <a class="tool" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener" aria-label="JavaScript"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></a>
+              <a class="tool" href="https://react.dev/" target="_blank" rel="noopener" aria-label="React"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"></a>
+              <a class="tool" href="https://www.php.net/" target="_blank" rel="noopener" aria-label="PHP"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP"></a>
+              <a class="tool" href="https://www.java.com/" target="_blank" rel="noopener" aria-label="Java"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"></a>
+              <a class="tool" href="https://www.mysql.com/" target="_blank" rel="noopener" aria-label="MySQL"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"></a>
+              <a class="tool" href="https://git-scm.com/" target="_blank" rel="noopener" aria-label="Git"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"></a>
+              <a class="tool" href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub"><img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Github_logo_svg.svg" alt="GitHub"></a>
+              <a class="tool" href="https://vercel.com/" target="_blank" rel="noopener" aria-label="Vercel"><img src="https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/dark/vercel.png" alt="Vercel"></a>
+              <a class="tool" href="https://firebase.google.com/" target="_blank" rel="noopener" aria-label="Firebase"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase"></a>
+              <a class="tool" href="https://reactnative.dev/" target="_blank" rel="noopener" aria-label="React Native"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Native"></a>
+            </div>
+            <p class="stack-note">Comfortable with HTML, CSS, JavaScript, PHP, Java, MySQL, Git, GitHub, Vercel, Firebase, React, and React Native basics.</p>
+          </section>
+
+          <section class="contact-card" id="contact">
+            <div class="card-title">
+              <h2>Contact</h2>
+              <span class="mini-tag">message</span>
+            </div>
+            <div class="topic-grid" aria-label="Choose contact topic">
+              <button class="topic-chip active" type="button" data-topic="internship">Internship</button>
+              <button class="topic-chip" type="button" data-topic="project">Project</button>
+              <button class="topic-chip" type="button" data-topic="collab">Collab</button>
+              <button class="topic-chip" type="button" data-topic="tech">Tech talk</button>
+            </div>
+            <div class="message-preview" aria-live="polite">
+              <strong id="contactSubject">Subject: Internship opportunity</strong>
+              <p id="contactBody">Hi Sam, I saw your portfolio and wanted to talk about an internship opportunity.</p>
+            </div>
+            <div class="contact-actions" data-email="your@email.com">
+              <a class="btn btn-dark" id="emailLink" href="mailto:your@email.com">Send email</a>
+              <button class="btn btn-light" type="button" id="copyEmail">Copy email</button>
+              <a class="btn btn-light wide" href="https://github.com/goly67" target="_blank" rel="noopener">Open GitHub</a>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <footer>
+      <span><strong>xai.dev</strong> - Sam Yujoco, Philippines</span>
+      <span>Built for future innovation.</span>
+    </footer>
+  </div>
+
+<script defer src="scripts/main.js"></script>
+</body>
+</html>
