@@ -71,6 +71,65 @@
 })();
 
 (function () {
+  const topbar = document.querySelector('.topbar');
+  const navToggle = document.getElementById('navToggle');
+  const primaryNav = document.querySelector('.primary-nav');
+  const navLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+  const mobileNavQuery = window.matchMedia('(max-width: 760px)');
+  let closeTimer = 0;
+
+  if (!topbar || !navToggle || !primaryNav) return;
+
+  function setNavOpen(open) {
+    window.clearTimeout(closeTimer);
+
+    if (open) {
+      topbar.classList.remove('nav-closing');
+      topbar.classList.add('nav-open');
+    } else if (topbar.classList.contains('nav-open')) {
+      topbar.classList.remove('nav-open');
+      topbar.classList.add('nav-closing');
+      closeTimer = window.setTimeout(() => {
+        topbar.classList.remove('nav-closing');
+      }, 320);
+    } else {
+      topbar.classList.remove('nav-closing');
+    }
+
+    navToggle.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+  }
+
+  navToggle.addEventListener('click', () => {
+    setNavOpen(!topbar.classList.contains('nav-open'));
+  });
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => setNavOpen(false));
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!topbar.classList.contains('nav-open') || topbar.contains(event.target)) return;
+    setNavOpen(false);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setNavOpen(false);
+  });
+
+  function syncNavMode() {
+    if (!mobileNavQuery.matches) setNavOpen(false);
+  }
+
+  if (mobileNavQuery.addEventListener) {
+    mobileNavQuery.addEventListener('change', syncNavMode);
+  } else if (mobileNavQuery.addListener) {
+    mobileNavQuery.addListener(syncNavMode);
+  }
+})();
+
+(function () {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const revealItems = Array.from(document.querySelectorAll('.section, .focus-item, .project-card, .timeline-item, .stack-card, .contact-card'));
   const scrollProgress = document.getElementById('scrollProgress');
@@ -280,7 +339,7 @@
       inDevelopment: 'In development',
       openSite: 'Open site',
       eqDesc: 'Real-time earthquake monitoring app that shows live seismic activity through API data, helping users track earthquakes as they happen.',
-      finDesc: 'A financial web application with a clean interface for viewing and managing financial data, built with a practical web stack and deployed on Vercel.',
+      finDesc: 'A modern real estate web application with an intuitive interface for discovering, browsing, and managing premium property listings.',
       timeDesc: 'A personal web app for storing memories, notes, and moments over time. It is still being refined as a long-term personal product idea.',
       libDesc: 'A digital check-in and check-out system for the school library, replacing paper logbooks with faster lookup, cleaner records, and instant attendance reporting.',
       pathTitle: 'Path',
@@ -365,7 +424,7 @@
       inDevelopment: '开发中',
       openSite: '打开网站',
       eqDesc: '实时地震监测应用，通过 API 数据展示最新地震活动，帮助用户追踪正在发生的地震。',
-      finDesc: '一个金融网页应用，提供简洁界面来查看和管理金融数据，使用实用的 Web 技术栈并部署在 Vercel。',
+      finDesc: '一款现代房地产网页应用，配备直观界面，用于发现、浏览和管理高端房源列表。',
       timeDesc: '用于保存回忆、笔记和重要时刻的个人网页应用，仍在持续打磨为长期产品想法。',
       libDesc: '校园图书馆数字签到签退系统，用更快的查询、清晰记录和即时考勤报表取代纸质登记本。',
       pathTitle: '成长路径',
@@ -443,7 +502,7 @@
       inDevelopment: 'กำลังพัฒนา',
       openSite: 'เปิดเว็บไซต์',
       eqDesc: 'แอปติดตามแผ่นดินไหวแบบเรียลไทม์ แสดงกิจกรรมแผ่นดินไหวล่าสุดผ่าน API เพื่อให้ผู้ใช้ติดตามเหตุการณ์ได้ทันที',
-      finDesc: 'เว็บแอปด้านการเงินที่มีอินเทอร์เฟซสะอาดสำหรับดูและจัดการข้อมูลทางการเงิน สร้างด้วย Web stack ที่ใช้งานได้จริงและ deploy บน Vercel',
+      finDesc: 'เว็บแอปอสังหาริมทรัพย์สมัยใหม่ พร้อมอินเทอร์เฟซที่ใช้งานง่ายสำหรับค้นหา เรียกดู และจัดการรายการอสังหาริมทรัพย์ระดับพรีเมียม',
       timeDesc: 'เว็บแอปส่วนตัวสำหรับเก็บความทรงจำ โน้ต และช่วงเวลาต่าง ๆ ยังพัฒนาและปรับปรุงต่อเนื่อง',
       libDesc: 'ระบบเช็กอิน/เช็กเอาต์ดิจิทัลสำหรับห้องสมุดโรงเรียน แทนสมุดลงชื่อกระดาษด้วยการค้นหาที่เร็วขึ้น บันทึกที่ชัดเจน และรายงานทันที',
       pathTitle: 'เส้นทาง',
@@ -521,7 +580,7 @@
       inDevelopment: 'Đang phát triển',
       openSite: 'Mở trang',
       eqDesc: 'Ứng dụng theo dõi động đất thời gian thực, hiển thị hoạt động địa chấn trực tiếp bằng dữ liệu API.',
-      finDesc: 'Ứng dụng web tài chính với giao diện gọn gàng để xem và quản lý dữ liệu tài chính, xây dựng bằng web stack thực tế và triển khai trên Vercel.',
+      finDesc: 'Một ứng dụng web bất động sản hiện đại với giao diện trực quan để khám phá, duyệt và quản lý các danh sách bất động sản cao cấp.',
       timeDesc: 'Ứng dụng web cá nhân để lưu ký ức, ghi chú và khoảnh khắc theo thời gian. Vẫn đang được tinh chỉnh như một ý tưởng sản phẩm dài hạn.',
       libDesc: 'Hệ thống check-in/check-out kỹ thuật số cho thư viện trường, thay sổ giấy bằng tra cứu nhanh, hồ sơ rõ ràng và báo cáo điểm danh tức thì.',
       pathTitle: 'Lộ trình',
@@ -599,7 +658,7 @@
       inDevelopment: '開発中',
       openSite: 'サイトを開く',
       eqDesc: 'API データで地震活動をリアルタイム表示し、発生中の地震を追跡できるモニタリングアプリ。',
-      finDesc: '金融データの閲覧と管理に使えるクリーンな UI の金融 Web アプリ。実用的な Web スタックで構築し Vercel にデプロイ。',
+      finDesc: 'プレミアム物件リストの発見、閲覧、管理に使える直感的なインターフェースを備えた、モダンな不動産 Web アプリ。',
       timeDesc: '思い出、メモ、瞬間を保存する個人向け Web アプリ。長期的なプロダクト案として改善中。',
       libDesc: '学校図書館向けのデジタルチェックイン/チェックアウトシステム。紙の記録を高速検索、明確な記録、即時レポートに置き換えます。',
       pathTitle: '歩み',
@@ -677,7 +736,7 @@
       inDevelopment: 'U razvoju',
       openSite: 'Otvori stranicu',
       eqDesc: 'Aplikacija za praćenje potresa u stvarnom vremenu koja prikazuje seizmičku aktivnost preko API podataka i pomaže korisnicima pratiti potrese dok se događaju.',
-      finDesc: 'Financijska web aplikacija s čistim sučeljem za pregled i upravljanje financijskim podacima, izgrađena praktičnim web stackom i objavljena na Vercelu.',
+      finDesc: 'Moderna web aplikacija za nekretnine s intuitivnim sučeljem za otkrivanje, pregledavanje i upravljanje premium oglasima nekretnina.',
       timeDesc: 'Osobna web aplikacija za spremanje uspomena, bilješki i trenutaka kroz vrijeme. Još se dorađuje kao dugoročna ideja za proizvod.',
       libDesc: 'Digitalni sustav prijave i odjave za školsku knjižnicu koji papirnate knjige zamjenjuje bržim pretraživanjem, urednijom evidencijom i trenutnim izvješćima o prisutnosti.',
       pathTitle: 'Put',
@@ -755,7 +814,7 @@
       inDevelopment: 'U razvoju',
       openSite: 'Otvori sajt',
       eqDesc: 'Aplikacija za praćenje zemljotresa u realnom vremenu koja prikazuje seizmičku aktivnost preko API podataka i pomaže korisnicima da prate zemljotrese dok se dešavaju.',
-      finDesc: 'Finansijska web aplikacija sa čistim interfejsom za pregled i upravljanje finansijskim podacima, napravljena praktičnim web stackom i objavljena na Vercelu.',
+      finDesc: 'Moderna web aplikacija za nekretnine sa intuitivnim interfejsom za otkrivanje, pregledanje i upravljanje premium oglasima nekretnina.',
       timeDesc: 'Lična web aplikacija za čuvanje uspomena, beleški i trenutaka kroz vreme. Još se dorađuje kao dugoročna ideja za proizvod.',
       libDesc: 'Digitalni sistem prijave i odjave za školsku biblioteku koji papirne evidencije zamenjuje bržom pretragom, urednijim zapisima i trenutnim izveštajima o prisustvu.',
       pathTitle: 'Put',
