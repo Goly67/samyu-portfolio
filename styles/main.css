@@ -423,7 +423,6 @@
     width: 20px;
     height: 20px;
     background: transparent;
-    border: 1px solid var(--line);
     border-radius: 8px;
     cursor: pointer;
     display: none;
